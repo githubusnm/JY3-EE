@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录/注册</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("#password").focus(function () {
+                $.get("register.do", {name: $("#name").val()}, function (response, status, xhr) {
+                    if (response == "true") {
+                        $("#sp1").text("可以注册")
+                    } else {
+                        $("#sp1").text("用户名已存在")
+                    }
+                })
+            })
+            $("#btn2").click(function () {
+                $.get("ajaxlogin.do", {name: $("#name").val(),password:$("#password").val()}, function (response, status, xhr) {
+                    console.log(response)
+                    if (response == 'true') {
+                        alert("欢迎");
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+<form>
+    用户名：<input type="text" id="name" name="name"><span id="sp1"></span><br>
+    密码：<input type="password" id="password" name="password"><br>
+    <button id="btn1">注册</button>
+    <button id="btn2">登录</button>
+</form>
+</body>
+</html>
