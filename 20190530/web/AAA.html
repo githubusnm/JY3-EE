@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("#btn1").click(function () {
+                $.get("huoqu.do", {name: $("#txt1").val()}, function (response, status, xhr) {
+                    console.log(response)
+                    if (response == '1'){
+                        $("#div1").text("还不错")
+                    }else if(response == '2'){
+                        $("#div1").text("一般般")
+                    }else{
+                        $("#div1").text("此用户没有评价")
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+<input type="text" id="txt1" name="name">
+<button id="btn1">获取</button>
+<br>
+<div id="div1"></div>
+</body>
+</html>

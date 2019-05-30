@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>123</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                url:"selectuser.do",
+                type:"get",
+                dataType:"json",
+                complete:function () {
+                    console.log("请求完成")
+                },
+                success:function (data) {
+                    console.log("请求成功");
+                    $.each(data,function (i,val) {
+                        $("tbody").append(
+                            $("<tr><td>"+val.id+"</td><td>"+val.name+"</td><td>"+val.password+"</td></tr>")
+                        )
+                    });
+                },
+                error:function () {
+                    console.log("请求错误")
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+<table>
+    <thead>
+    <th>id</th>
+    <th>name</th>
+    <th>password</th>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+</body>
+</html>
