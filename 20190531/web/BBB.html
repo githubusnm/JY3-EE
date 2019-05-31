@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("#btn1").click(function (e) {
+                e.preventDefault()
+                $("#div1").load(
+                    "BBB.do",
+                    function (response) {
+                    $("#div1").html(response)
+                })
+            })
+
+            $("#btn2").click(function (e) {
+                e.preventDefault()
+                $.get(
+                    "BBB  b.do",
+                    // {name:$("#name").val(),password:$("#password").val(),password1:$("#password1").val(),email:$("#email").val()},
+                    {name:$("#name").val()},
+                    function (response,status,xhr) {
+                alert("123")
+                        if (response == "true"){
+                            alert("登陆成功")
+                        } else {
+                            alert("登陆失败")
+                        }
+                    }
+                )
+            })
+
+        })
+    </script>
+</head>
+<body>
+<button id="btn1">Ajax 加载用户注册页面</button>
+<div id="div1"></div>
+<form><table border="1px">
+        <tr>
+             <td>用户注册</td>
+        </tr>
+       <tr>
+             <td>用户名：<input type="text" id="name" name="name"></td>
+         </tr>
+      <tr>
+         <td>密码：<input type="password" id="password" name="password"></td>
+         </tr>
+     <tr>
+             <td>确认密码：<input type="password" id="password1" name="password1"></td>
+        </tr>
+       <tr>
+            <td>邮箱：<input type="email" id="email" name="email"></td>
+        </tr>
+       <tr>
+              <td><input type="submit" id="btn2" value="提交"></td>
+           </tr>
+   </table></form>
+</body>
+</html>
